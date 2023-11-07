@@ -4,8 +4,9 @@ import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.homeWrap}>
-      <View>
-        <Text>Home Screen</Text>
+      <View >
+        <Text style={styles.homeTitle}>Home</Text>
+        <Text style={styles.userName}>Acha Goodness</Text>
       </View>
     </SafeAreaView>
   )
@@ -18,6 +19,17 @@ const styles = StyleSheet.create({
     flex:1,
     backgroundColor:"#000000",
     padding:"3%",
-    justifyContent:"center",
   },
+  homeTitle:{
+    color:"white",
+    fontSize:30,
+    fontWeight:"600",
+    textAlign:"center",
+  },
+  userName:{
+    color:"#56C7E2",
+    fontSize:25,
+    textAlign:"center",
+    marginVertical:"5%",
+  }
 })
