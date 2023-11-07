@@ -8,13 +8,13 @@ const LoginScreen = ({ navigation }) => {
         <Text style={styles.loginText}>LOGIN</Text>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput label="Username" placeholder="Username" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput label="Username" placeholder="Password" placeholderTextColor={'white'} style={styles.input}/>
+        <TextInput placeholder="Email" placeholderTextColor={'white'} style={styles.input}/>
+        <TextInput placeholder="Password" placeholderTextColor={'white'} style={styles.input}/>
       </View>
       <View style={styles.signUpWrap}>
         <Text style={styles.signUpText}>Don't have an account? <Text onPress={() => navigation.navigate("SignUp")} style={styles.upBtn}>SIGN UP</Text></Text>
       </View>
-      <TouchableOpacity style={styles.signInBtn}>
+      <TouchableOpacity style={styles.signInBtn} onPress={() => navigation.navigate("TabNavigation")}>
         <Text style={styles.signBtnText}>SIGN IN</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -47,9 +47,10 @@ const styles = StyleSheet.create({
     paddingHorizontal:10,
     borderBottomWidth:1,
     borderColor:"white",
+    color:"white",
   },
   signInBtn:{
-    backgroundColor:"white",
+    backgroundColor:"#56C7E2",
     width:"85%",
     alignSelf:"center",
     alignItems:"center",
@@ -58,7 +59,8 @@ const styles = StyleSheet.create({
     borderRadius:10,
   },
   signBtnText:{
-    fontWeight:"900"
+    fontWeight:"900",
+    color:"white",
   },
   signUpWrap:{
     width:"85%",
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     color:"white",
   },
   upBtn:{
-    color:"gold",
+    color:"#56C7E2",
     fontWeight:"500",
   }
 })

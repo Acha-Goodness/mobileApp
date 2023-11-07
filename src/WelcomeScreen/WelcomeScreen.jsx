@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   headerText:{
     color:"white",
     alignSelf:"center",
-    fontSize:30,
+    fontSize:25,
     fontWeight:"900",
   },
   imageWrap:{
@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     justifyContent:"center",
   },
   btn:{
-    backgroundColor:"white",
+    backgroundColor:"#56C7E2",
     alignItems:"center",
-    paddingVertical:10,
+    paddingVertical:"3%",
     width:"80%",
     borderRadius:10,
     alignSelf:"center",
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
     bottom:5
   },
   btnText:{
-    fontSize:18,
-    fontWeight:"900"
+    fontSize:15,
+    fontWeight:"900",
+    color:"white",
   }
 })

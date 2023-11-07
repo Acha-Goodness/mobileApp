@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const UpdateProfileScreen = () => {
   return (
     <View>
-      <Text>UpdateProfileScreen</Text>
+      <Text>Update Profile Screen</Text>
     </View>
   )
 }
