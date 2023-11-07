@@ -1,12 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import bigPanda from "../../assets/bigPanda.png";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.welcomeWrap}>
       <View>
-        <Text>welcomeScreen</Text>
+        <Text style={styles.headerText}>WELCOME</Text>
+        <View style={styles.imageWrap}>
+          <Image source={bigPanda} alt="..."/>
+        </View>
       </View>
+      <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Login")}>
+           <Text style={styles.btnText}>START</Text>
+        </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -14,9 +21,35 @@ const WelcomeScreen = () => {
 export default WelcomeScreen
 
 const styles = StyleSheet.create({
-  container:{
+  welcomeWrap:{
     flex:1,
+    backgroundColor:"#000000",
+    padding:"3%",
+  },
+  headerText:{
+    color:"white",
+    alignSelf:"center",
+    fontSize:30,
+    fontWeight:"900",
+  },
+  imageWrap:{
+    marginTop:"30%",
+    paddingVertical:"8%",
+    alignSelf:"center",
+    justifyContent:"center",
+  },
+  btn:{
     backgroundColor:"white",
-    padding:10,
+    alignItems:"center",
+    paddingVertical:10,
+    width:"80%",
+    borderRadius:10,
+    alignSelf:"center",
+    position:"absolute",
+    bottom:5
+  },
+  btnText:{
+    fontSize:18,
+    fontWeight:"900"
   }
 })
