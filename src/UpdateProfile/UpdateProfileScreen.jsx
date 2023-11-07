@@ -1,14 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
 
 const UpdateProfileScreen = () => {
   return (
-    <View>
-      <Text>Update Profile Screen</Text>
-    </View>
+    <SafeAreaView style={styles.updateWrap}>
+      <View>
+        <Text>Update Profile Screen</Text>
+      </View>
+    </SafeAreaView>
   )
 }
 
 export default UpdateProfileScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  updateWrap:{
+    flex:1,
+    backgroundColor:"#000000",
+    padding:"3%",
+    justifyContent:"center",
+  },
+})
