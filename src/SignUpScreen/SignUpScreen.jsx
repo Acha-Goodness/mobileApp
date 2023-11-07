@@ -8,11 +8,11 @@ const SignUpScreen = ({ navigation }) => {
         <Text style={styles.signUpText}>SIGN UP</Text>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput placeholder="First Name" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Last Name" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Email" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Password" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Confirm Password" placeholderTextColor={'white'} style={styles.input}/>
+        <TextInput placeholder="First Name" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Last Name" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Email" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Password" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Confirm Password" placeholderTextColor={'grey'} style={styles.input}/>
       </View>
       <TouchableOpacity style={styles.signUpBtn} onPress={() => navigation.navigate("TabNavigation")}>
         <Text style={styles.signUpBtnText}>SIGN UP</Text>

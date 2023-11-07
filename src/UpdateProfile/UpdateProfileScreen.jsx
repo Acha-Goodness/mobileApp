@@ -8,9 +8,9 @@ const UpdateProfileScreen = () => {
         <Text style={styles.updateTitle}>Update Profile</Text>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput placeholder="First Name" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Last Name" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Email" placeholderTextColor={'white'} style={styles.input}/>
+        <TextInput placeholder="First Name" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Last Name" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Email" placeholderTextColor={'grey'} style={styles.input}/>
       </View>
       <TouchableOpacity style={styles.updateBtn} onPress={() => navigation.navigate("TabNavigation")}>
         <Text style={styles.updateBtnText}>UPDATE</Text>

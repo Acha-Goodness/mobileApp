@@ -8,8 +8,8 @@ const LoginScreen = ({ navigation }) => {
         <Text style={styles.loginText}>LOGIN</Text>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput placeholder="Email" placeholderTextColor={'white'} style={styles.input}/>
-        <TextInput placeholder="Password" placeholderTextColor={'white'} style={styles.input}/>
+        <TextInput placeholder="Email" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput placeholder="Password" placeholderTextColor={'grey'} style={styles.input}/>
       </View>
       <View style={styles.signUpWrap}>
         <Text style={styles.signUpText}>Don't have an account? <Text onPress={() => navigation.navigate("SignUp")} style={styles.upBtn}>SIGN UP</Text></Text>
