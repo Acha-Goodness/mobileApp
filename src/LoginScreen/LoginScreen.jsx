@@ -1,21 +1,61 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { StyleSheet, SafeAreaView, Text, View, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useLoginMutation } from '../api/userAuthSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { UserProfileContext } from '../../App';
+import { jwtDecode } from 'jwt-decode';
+
 
 const LoginScreen = ({ navigation }) => {
+
+  const { setIsLoggedIn, setUserProfile } = useContext(UserProfileContext);
+
+  const loginData = {
+      email:"",
+      password:""
+  }
+
+  const [ log, setLog ] = useState(loginData)
+  const [ loading, setLoading ] = useState(false);
+  const [ login ] = useLoginMutation();
+
+  const handleOnchangeText = (text, name) => {
+    setLog({
+      ...log,
+      [name] : text
+    })
+  }
+
+  const handleLogIn = () => {
+    setLoading(true)
+    login(log)
+    .then(res => {
+      console.log(res.data)
+      const JWTTOKEN = res.data.token
+      // AsyncStorage.setItem("JWTTOKEN", JWTTOKEN)
+      setIsLoggedIn(true)
+      setLoading(false)
+      setLog("")
+    }).catch (err => {
+      console.log(err)
+      setLoading(false)
+    })
+  }
+
   return (
     <SafeAreaView style={styles.loginWrap}>
       <View>
         <Text style={styles.loginText}>LOGIN</Text>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput placeholder="Email" placeholderTextColor={'grey'} style={styles.input}/>
-        <TextInput placeholder="Password" placeholderTextColor={'grey'} style={styles.input}/>
+        <TextInput value={log.email} placeholder="Email" placeholderTextColor={'grey'} style={styles.input} onChangeText={(text) => handleOnchangeText(text, "email")}/>
+        <TextInput value={log.password} placeholder="Password" placeholderTextColor={'grey'} style={styles.input}  onChangeText={(text) => handleOnchangeText(text, "password")}/>
       </View>
       <View style={styles.signUpWrap}>
         <Text style={styles.signUpText}>Don't have an account? <Text onPress={() => navigation.navigate("SignUp")} style={styles.upBtn}>SIGN UP</Text></Text>
       </View>
-      <TouchableOpacity style={styles.signInBtn} onPress={() => navigation.navigate("TabNavigation")}>
-        <Text style={styles.signBtnText}>SIGN IN</Text>
+      <TouchableOpacity style={styles.signInBtn} onPress={handleLogIn}>
+        {loading ? <ActivityIndicator color="#ffffff"/> : <Text style={styles.signBtnText}>SIGN IN</Text>}
       </TouchableOpacity>
     </SafeAreaView>
   )

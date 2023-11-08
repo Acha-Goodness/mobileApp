@@ -9,7 +9,13 @@ export const userSlice = createApi({
     endpoints: ( builder ) => ({
 
         getUsers: builder.query({
-            query: () => `/api/users/${id}`,
+            query: () => `/api/users?page=2`,
+            method:"GET",
+            providesTags: ["Users"],
+        }),
+
+        getUserById: builder.query({
+            query: (id) => `/api/users/${id}`,
             method:"GET",
             providesTags: ["Users"],
         }),
@@ -40,6 +46,18 @@ export const userSlice = createApi({
                 }
             },
             invalidatesTags: ["Users"]
+        }),
+
+        editUser: builder.mutation({
+            query: ( payload ) => {
+                // console.log( payload )
+                const { id } = payload
+                return{
+                url: `api/users/${id}`,
+                method:"PATCH",
+                body: payload 
+              }
+            }
         })
 
 
@@ -48,6 +66,8 @@ export const userSlice = createApi({
 
 export const {
     useGetUsersQuery,
+    useGetUserByIdQuery,
     useSignUpMutation,
     useLoginMutation,
+    useEditUserMutation
 } = userSlice;
