@@ -1,21 +1,56 @@
-import React from 'react'
-import { StyleSheet, SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react'
+import { StyleSheet, SafeAreaView, Text, View, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useSignUpMutation } from '../api/userAuthSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = ({ navigation }) => {
+
+  const userData = {
+    first_name:"",
+    last_name:"",
+    email:"",
+    password:"",
+    confirmPassword:""
+  }
+
+  const [ user, setUser ] = useState(userData);
+  const [ loading, setLoading ] = useState(false);
+  const [  signUp ] = useSignUpMutation();
+
+  const handleOnchangeText = (text, name) => {
+    setUser({
+      ...user,
+      [name] : text
+    })
+  }
+
+  const handleSignUp = () => {
+    setLoading(true)
+    signUp(user)
+    .then(res => {
+      const JWTtoken = res.data.token
+      AsyncStorage.setItem(JWTtoken)
+      setLoading(false)
+    }).catch(err => {
+      console.log(err)
+      setLoading(false)
+    })
+  }
+
   return (
     <SafeAreaView style={styles.signWrap}>
       <View>
         <Text style={styles.signUpText}>SIGN UP</Text>
       </View>
       <View style={styles.inputWrap}>
-        <TextInput placeholder="First Name" placeholderTextColor={'grey'} style={styles.input}/>
-        <TextInput placeholder="Last Name" placeholderTextColor={'grey'} style={styles.input}/>
-        <TextInput placeholder="Email" placeholderTextColor={'grey'} style={styles.input}/>
-        <TextInput placeholder="Password" placeholderTextColor={'grey'} style={styles.input}/>
-        <TextInput placeholder="Confirm Password" placeholderTextColor={'grey'} style={styles.input}/>
+        {/* <TextInput value={user.first_name} placeholder="First Name" placeholderTextColor={'grey'} style={styles.input} onChangeText={(text) => handleOnchangeText(text, "first_name")}/>
+        <TextInput value={user.last_name} placeholder="Last Name" placeholderTextColor={'grey'} style={styles.input} onChangeText={(text) => handleOnchangeText(text, "last_name")}/> */}
+        <TextInput value={user.email} placeholder="Email" placeholderTextColor={'grey'} style={styles.input} onChangeText={(text) => handleOnchangeText(text, "email")}/>
+        <TextInput value={user.password} placeholder="Password" placeholderTextColor={'grey'} style={styles.input} onChangeText={(text) => handleOnchangeText(text, "password")}/>
+        {/* <TextInput value={user.confirmPassword} placeholder="Confirm Password" placeholderTextColor={'grey'} style={styles.input} onChangeText={(text) => handleOnchangeText(text, "confirmPassword")}/> */}
       </View>
-      <TouchableOpacity style={styles.signUpBtn} onPress={() => navigation.navigate("TabNavigation")}>
-        <Text style={styles.signUpBtnText}>SIGN UP</Text>
+      <TouchableOpacity style={styles.signUpBtn} onPress={handleSignUp}>
+        {loading ? <ActivityIndicator color="#ffffff"/> : <Text style={styles.signUpBtnText}>SIGN UP</Text>}
       </TouchableOpacity>
     </SafeAreaView>
   )

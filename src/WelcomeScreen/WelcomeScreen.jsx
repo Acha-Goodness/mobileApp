@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   btn:{
     backgroundColor:"#56C7E2",
     alignItems:"center",
-    paddingVertical:"3%",
+    paddingVertical:"4%",
     width:"80%",
     borderRadius:10,
     alignSelf:"center",
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   btnText:{
     fontSize:15,
-    fontWeight:"900",
+    fontWeight:"600",
     color:"white",
   }
 })
