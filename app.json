@@ -4,12 +4,12 @@
     "slug": "mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/pandaa.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/pandaa.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/panda.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.achagoodness.mobileapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3c1b2deb-c5a8-4a0c-a1d2-baeba6c635b9"
+      }
     }
   }
 }
