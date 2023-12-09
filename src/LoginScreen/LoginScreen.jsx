@@ -6,7 +6,7 @@ import { UserProfileContext } from '../../App';
 import { jwtDecode } from 'jwt-decode';
 
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation, nav }) => {
 
   const { setIsLoggedIn, setUserProfile } = useContext(UserProfileContext);
 
@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
     .then(res => {
       console.log(res.data)
       const JWTTOKEN = res.data.token
-      // AsyncStorage.setItem("JWTTOKEN", JWTTOKEN)
+      AsyncStorage.setItem("JWTTOKEN", JWTTOKEN)
       setIsLoggedIn(true)
       setLoading(false)
       setLog("")
